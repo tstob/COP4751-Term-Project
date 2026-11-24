@@ -8,24 +8,55 @@
 </head>
 <body>
 
-    <h1>Job Application Tracker</h1>
-    <h2>Dashboard</h2>
+    <div class="dashboard">
 
-    <a href="/companies">View Companies</a>
-    
-    <p><a href="/jobs">View Jobs</a></p>
+        <h1>Job Application Tracker</h1>
+        <h2>Dashboard</h2>
 
-    <p><a href="/applications">View Applications</a></p>
+        <!-- horizontal -->
+        <div class="dashboard-totals">
 
-    <p><a href="/contacts">View Contacts</a></p>
+            <div>
+                <h3>{{ counts.companies }}</h3>
+                <p>Companies</p>
+            </div>
 
-    <p><a href="{{ url_for('job_match') }}">Match Jobs</a></p>
-    
-    <!-- Show the total records from each table -->
-    <h3>Companies: {{ counts.companies }}</h3>
-    <h3>Jobs: {{ counts.jobs }}</h3>
-    <h3>Applications: {{ counts.applications }}</h3>
-    <h3>Contacts: {{ counts.contacts }}</h3>
+            <div>
+                <h3>{{ counts.jobs }}</h3>
+                <p>Jobs</p>
+            </div>
+
+            <div>
+                <h3>{{ counts.applications }}</h3>
+                <p>Applications</p>
+            </div>
+
+            <div>
+                <h3>{{ counts.contacts }}</h3>
+                <p>Contacts</p>
+            </div>
+
+        </div>
+
+        <!-- separate -->
+        <hr>
+
+        <!-- vertical -->
+        <nav class="dashboard-nav">
+
+            <p><a href="/companies">View Companies</a></p>
+
+            <p><a href="/jobs">View Jobs</a></p>
+
+            <p><a href="/applications">View Applications</a></p>
+
+            <p><a href="/contacts">View Contacts</a></p>
+
+            <p><a href="{{ url_for('job_match') }}">Match Jobs</a></p>
+
+        </nav>
+
+    </div>
 
 </body>
 </html>
