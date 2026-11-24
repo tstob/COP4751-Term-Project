@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Application</title>
+</head>
+<body>
+
+    <h1>Edit Application</h1>
+
+    <form method="POST">
+
+        <label>Job:</label>
+        <select name="job_id" required>
+            {% for job in jobs %}
+            <option value="{{ job.job_id }}"
+                {% if job.job_id == application.job_id %}selected{% endif %}>
+                {{ job.job_title }} - {{ job.company_name }}
+            </option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <label>Application Date:</label>
+        <input type="date" name="application_date"
+               value="{{ application.application_date }}" required>
+        <br><br>
+
+        <label>Status:</label>
+        <select name="status">
+            {% for status in ['Applied', 'Phone Screen',
+                              'Interview Scheduled', 'Interview Completed',
+                              'Offer Received', 'Offer Accepted', 'Rejected'] %}
+            <option value="{{ status }}"
+                {% if status == application.status %}selected{% endif %}>
+                {{ status }}
+            </option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <label>Resume Version:</label>
+        <input type="text" name="resume_version"
+               value="{{ application.resume_version or '' }}"
+               maxlength="50">
+        <br><br>
+
+        <label>
+            <input type="checkbox" name="cover_letter_sent"
+                {% if application.cover_letter_sent %}checked{% endif %}>
+            Cover Letter Sent
+        </label>
+        <br><br>
+
+        <label>Response Date:</label>
+        <input type="date" name="response_date"
+               value="{{ application.response_date or '' }}">
+        <br><br>
+
+        <label>Interview Date:</label>
+        <input type="datetime-local" name="interview_date"
+               value="{{ application.interview_date.strftime('%Y-%m-%dT%H:%M') if application.interview_date else '' }}">
+        <br><br>
+
+        <label>Notes:</label>
+        <textarea name="notes" rows="4" cols="40">{{ application.notes or '' }}</textarea>
+        <br><br>
+
+        <button type="submit">Save Changes</button>
+
+    </form>
+
+    <p><a href="/applications">Back to Applications</a></p>
+
+</body>
+</html>

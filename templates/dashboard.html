@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>Job Application Tracker</h1>
+    <h2>Dashboard</h2>
+
+    <a href="/companies">View Companies</a>
+    
+    <p><a href="/jobs">View Jobs</a></p>
+
+    <p><a href="/applications">View Applications</a></p>
+
+    <p><a href="/contacts">View Contacts</a></p>
+
+    <p><a href="{{ url_for('job_match') }}">Match Jobs</a></p>
+    
+    <!-- Show the total records from each table -->
+    <h3>Companies: {{ counts.companies }}</h3>
+    <h3>Jobs: {{ counts.jobs }}</h3>
+    <h3>Applications: {{ counts.applications }}</h3>
+    <h3>Contacts: {{ counts.contacts }}</h3>
+
+</body>
+</html>

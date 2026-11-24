@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Application</title>
+</head>
+<body>
+
+    <h1>Add New Application</h1>
+
+    <form method="POST">
+
+        <label>Job:</label>
+        <select name="job_id" required>
+            <option value="">Select Job</option>
+            {% for job in jobs %}
+            <option value="{{ job.job_id }}">
+                {{ job.job_title }} - {{ job.company_name }}
+            </option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <label>Application Date:</label>
+        <input type="date" name="application_date" required>
+        <br><br>
+
+        <label>Status:</label>
+        <select name="status">
+            <option value="Applied">Applied</option>
+            <option value="Phone Screen">Phone Screen</option>
+            <option value="Interview Scheduled">Interview Scheduled</option>
+            <option value="Interview Completed">Interview Completed</option>
+            <option value="Offer Received">Offer Received</option>
+            <option value="Offer Accepted">Offer Accepted</option>
+            <option value="Rejected">Rejected</option>
+        </select>
+        <br><br>
+
+        <label>Resume Version:</label>
+        <input type="text" name="resume_version" maxlength="50">
+        <br><br>
+
+        <label>
+            <input type="checkbox" name="cover_letter_sent">
+            Cover Letter Sent
+        </label>
+        <br><br>
+
+        <label>Notes:</label>
+        <textarea name="notes" rows="4" cols="40"></textarea>
+        <br><br>
+
+        <button type="submit">Save Application</button>
+
+    </form>
+
+    <p><a href="/applications">Back to Applications</a></p>
+
+</body>
+</html>

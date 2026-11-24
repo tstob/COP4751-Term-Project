@@ -1,0 +1,98 @@
+/* General page appearance */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff3c4;
+    color: #253858;
+    margin: 30px;
+}
+
+/* Page headings */
+h1 {
+    color: #253858;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #77542d;
+    margin-top: 25px;
+}
+
+/* Navigation links */
+a {
+    color: #174ea6;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #77542d;
+    text-decoration: underline;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fffdf5;
+    margin-top: 20px;
+    border: 1px solid #e5d39b;
+}
+
+th {
+    background-color: #253858;
+    color: #ffffff;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #e5d39b;
+}
+
+tr:hover {
+    background-color: #fff0b0;
+}
+
+/* Forms */
+form {
+    margin-top: 20px;
+}
+
+input, select, textarea {
+    padding: 9px;
+    margin: 5px 0;
+    border: 1px solid #d6bc79;
+    border-radius: 5px;
+    background-color: #fffdf5;
+    color: #253858;
+}
+
+/* Buttons */
+button {
+    background-color: #253858;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #77542d;
+}
+
+/* fisplay smaller screens */
+@media (max-width: 768px) {
+    body {
+        margin: 15px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+
+    input {
+        max-width: 90%;
+    }
+}

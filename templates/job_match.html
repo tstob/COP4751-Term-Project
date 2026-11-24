@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Match</title>
+</head>
+<body>
+
+    <h1>Job Match</h1>
+
+    <a href="/">Back to Dashboard</a>
+
+    <h2>Find Jobs That Match Your Skills</h2>
+
+    <!-- Form for entering skills -->
+    <form method="POST">
+        <label>Enter your skills (separated by commas):</label>
+        <br><br>
+
+        <input type="text" name="skills"
+               value="{{ user_skills }}"
+               placeholder="Python, SQL, Flask"
+               size="50" required>
+
+        <button type="submit">Find Matches</button>
+    </form>
+
+    <!-- Display matching results -->
+    {% if results %}
+        <h2>Matching Jobs</h2>
+
+        <table border="1">
+            <tr>
+                <th>Job Title</th>
+                <th>Company</th>
+                <th>Match Percentage</th>
+                <th>Matched Skills</th>
+                <th>Missing Skills</th>
+            </tr>
+
+            {% for job in results %}
+            <tr>
+                <td>{{ job.job_title }}</td>
+                <td>{{ job.company_name }}</td>
+                <td>{{ job.match_percentage }}%</td>
+                <td>{{ job.matched_skills | join(', ') if job.matched_skills else 'None' }}</td>
+                <td>{{ job.missing_skills | join(', ') if job.missing_skills else 'None' }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+</body>
+</html>

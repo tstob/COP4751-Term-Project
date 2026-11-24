@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Contact</title>
+</head>
+<body>
+
+    <h1>Edit Contact</h1>
+
+    <a href="{{ url_for('contacts') }}">Back to Contacts</a>
+
+    <form method="POST">
+
+        <p>
+            <label>Company:</label>
+            <select name="company_id" required>
+                {% for company in companies %}
+                <option value="{{ company.company_id }}"
+                    {% if company.company_id == contact.company_id %}selected{% endif %}>
+                    {{ company.company_name }}
+                </option>
+                {% endfor %}
+            </select>
+        </p>
+
+        <p>
+            <label>First Name:</label>
+            <input type="text" name="first_name"
+                   value="{{ contact.first_name }}" required>
+        </p>
+
+        <p>
+            <label>Last Name:</label>
+            <input type="text" name="last_name"
+                   value="{{ contact.last_name }}" required>
+        </p>
+
+        <p>
+            <label>Email:</label>
+            <input type="email" name="email"
+                   value="{{ contact.email or '' }}">
+        </p>
+
+        <p>
+            <label>Phone:</label>
+            <input type="text" name="phone"
+                   value="{{ contact.phone or '' }}">
+        </p>
+
+        <p>
+            <label>Job Title:</label>
+            <input type="text" name="job_title"
+                   value="{{ contact.job_title or '' }}">
+        </p>
+
+        <p>
+            <label>LinkedIn URL:</label>
+            <input type="url" name="linkedin_url"
+                   value="{{ contact.linkedin_url or '' }}">
+        </p>
+
+        <p>
+            <label>Notes:</label>
+            <textarea name="notes" rows="4" cols="40">{{ contact.notes or '' }}</textarea>
+        </p>
+
+        <button type="submit">Save Changes</button>
+
+    </form>
+
+</body>
+</html>

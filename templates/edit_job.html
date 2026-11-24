@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Job</title>
+</head>
+<body>
+
+    <h1>Edit Job</h1>
+
+    <form method="POST">
+
+        <label>Company:</label>
+        <select name="company_id" required>
+            {% for company in companies %}
+            <option value="{{ company.company_id }}"
+                {% if company.company_id == job.company_id %}selected{% endif %}>
+                {{ company.company_name }}
+            </option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <label>Job Title:</label>
+        <input type="text" name="job_title"
+               value="{{ job.job_title }}" maxlength="100" required>
+        <br><br>
+
+        <label>Job Type:</label>
+        <select name="job_type">
+            {% for type in ['Full-time', 'Part-time', 'Contract', 'Internship'] %}
+            <option value="{{ type }}"
+                {% if type == job.job_type %}selected{% endif %}>
+                {{ type }}
+            </option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <label>Minimum Salary:</label>
+        <input type="number" name="salary_min"
+               value="{{ job.salary_min if job.salary_min is not none else '' }}"
+               min="0" step="0.01">
+        <br><br>
+
+        <label>Maximum Salary:</label>
+        <input type="number" name="salary_max"
+               value="{{ job.salary_max if job.salary_max is not none else '' }}"
+               min="0" step="0.01">
+        <br><br>
+
+        <button type="submit">Save Changes</button>
+
+    </form>
+
+    <p><a href="/jobs">Back to Jobs</a></p>
+
+</body>
+</html>
